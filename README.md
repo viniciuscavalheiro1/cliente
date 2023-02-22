@@ -7,7 +7,7 @@
 - Docker
 - docker-compose
 - DockerHub
-- Swagger ainda não configurado
+- Swagger
 
 API rest de cliente, contendo as principais operações CRUD. Busca paginada, busca por nome, email, cpf, id, parte de nome...
 
