@@ -12,7 +12,7 @@ import java.util.UUID;
 @Entity
 public class Cliente {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(name = "nome", nullable = false)
     private String nome;
