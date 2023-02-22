@@ -3,6 +3,10 @@ package br.com.vinicius.cliente.http.controller;
 import br.com.vinicius.cliente.entities.Cliente;
 import br.com.vinicius.cliente.http.controller.dto.filtro.ClienteFiltro;
 import br.com.vinicius.cliente.services.impl.ClienteServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +33,35 @@ public class ClienteController {
     }
 
     @GetMapping
+    @Operation(
+            description = "Listar todos os clientes",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Sucesso no retorno",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    examples = {
+                                            @ExampleObject(
+                                                    value = "{\"code\" : 200, \"Status\" : ok}"
+                                            )
+                                    }
+                            )
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "bad request",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    examples = {
+                                            @ExampleObject(
+                                                    value = "{\"code\" : 400, \"Status\" : bad request}"
+                                            )
+                                    }
+                            )
+                    )
+            }
+    )
     @ResponseStatus(HttpStatus.OK)
     public Page<Cliente> listarClientes(ClienteFiltro clienteFiltro, Pageable pageable) {
         return clienteService.listarClientes(clienteFiltro, pageable);
