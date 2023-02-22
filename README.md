@@ -2,6 +2,7 @@
 
 #### Tecnologias utilizadas
 
+- Java 19
 - Spring boot v3.0.0
 - MySql v8.0.31
 - Docker
